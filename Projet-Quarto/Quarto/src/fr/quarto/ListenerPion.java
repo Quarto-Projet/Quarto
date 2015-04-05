@@ -5,8 +5,12 @@ import java.awt.event.MouseListener;
 
 public class ListenerPion implements MouseListener{
 
-	public ListenerPion(Pion pion1, Jeu jeu) {
+	private Pion pion1;
+	private Jeu jeu;
+	public ListenerPion(Pion pion, Jeu jeu) {
 		// TODO Auto-generated constructor stub
+		this.jeu = jeu;
+		this.pion1 = pion;
 	}
 
 	@Override
@@ -18,7 +22,10 @@ public class ListenerPion implements MouseListener{
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-
+		if(!(pion1.isPlace())){
+			jeu.afficherSelection(pion1);
+			pion1.setSelectionne(true);
+		}
 	}
 
 	@Override
@@ -38,5 +45,4 @@ public class ListenerPion implements MouseListener{
 		// TODO Auto-generated method stub
 
 	}
-
 }

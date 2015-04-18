@@ -9,10 +9,12 @@ import java.awt.Paint;
 
 import javax.swing.JPanel;
 
-public class Case  extends JPanel{
+public class Case extends JPanel{
 	private boolean selectionnee;
 	public Case(){
 		setLayout(new GridLayout(1,0));
+		setBackground(Color.LIGHT_GRAY);
+		setForeground(Color.LIGHT_GRAY);
 	}
 	
 	public void setSelectionnee(boolean selectionnee) {
@@ -27,8 +29,8 @@ public class Case  extends JPanel{
 	}
 
 	private void initCouleur(){
-			setBackground(Color.WHITE);
-			setForeground(new Color(200, 200, 200));
+			setBackground(Color.LIGHT_GRAY);
+			setForeground(Color.LIGHT_GRAY);
 		}
 
 	@Override

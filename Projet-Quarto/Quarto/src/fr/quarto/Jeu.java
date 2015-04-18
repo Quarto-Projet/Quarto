@@ -116,6 +116,7 @@ public class Jeu extends JPanel{
         choisi.repaint();
         pionActif.setSelectionne(false);
         pionActif.setPlace(true);
+        pionActif.updateUI();
         for(int i = 0; i < 16; i++){
         	plateau.getCase(i).setSelectionnee(false);
         }

@@ -4,11 +4,17 @@ import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Paint;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class Pion extends JPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private boolean noir;
 	private boolean grand;
 	private boolean carre;
@@ -16,6 +22,9 @@ public class Pion extends JPanel{
 	private int taille;
 	private boolean place;
 	private boolean selectionne;
+	private Image image;
+	private ImageIcon ii;
+	
 	public Pion(){
 		setOpaque(false);
 		setPlace(false);
@@ -56,10 +65,20 @@ public class Pion extends JPanel{
 	public void setPlein(boolean plein) {
 		this.plein = plein;
 	}
+	public Image getImage() {
+        return image;
+    }
+	public ImageIcon getIi(){
+		return ii;
+    }
 	@Override
 	public void paintComponent(Graphics g){
-		Paint paint;
 		Graphics2D g2d;
+		int tailleX = 100;
+		int tailleY;
+		if(!this.isGrand()){
+			tailleX *= (float) 4/6;
+		}
 		if (g instanceof Graphics2D) {
 			g2d = (Graphics2D) g;
 		}
@@ -67,19 +86,10 @@ public class Pion extends JPanel{
 			System.out.println("Error");
 			return;
 		}
-		paint = new GradientPaint(0,0, getBackground(), getWidth(), getHeight(), getForeground());
-		g2d.setPaint(paint);
-		if(carre)
-			g.fillRect((getWidth()-this.taille)/2, (getHeight()-this.taille)/2,this.taille, this.taille);
-		else
-			g.fillOval((getWidth()-this.taille)/2, (getHeight()-this.taille)/2, this.taille, this.taille);
-		if(!plein){
-			paint = new GradientPaint(0,0, Color.LIGHT_GRAY, getWidth(), getHeight(), Color.LIGHT_GRAY);
-			g2d.setPaint(paint);
-			g.fillOval((getWidth()-this.taille/2)/2, (getHeight()-this.taille/2)/2, this.taille/2, this.taille/2);
+		tailleY = (int) (tailleX * ((float) this.getIi().getIconHeight()/this.getIi().getIconWidth()));
+		g2d.drawImage(this.getImage(), 10, 10, tailleX,tailleY, this);   
 			
-		}
-	}
+}
 	public int getTaille() {
 		return taille;
 	}
@@ -106,5 +116,25 @@ public class Pion extends JPanel{
 			else
 				setBackground(Color.WHITE);
 		}
+	}
+	public void donneImage()
+	{
+		String string = "";
+		
+		int myInt = (this.isNoir()) ? 1 : 0;
+		string += myInt;
+		
+		myInt = (this.isGrand()) ? 1 : 0;
+		string += myInt;
+		
+		myInt = (this.isCarre()) ? 1 : 0;
+		string += myInt;
+		
+		myInt = (this.isPlein()) ? 1 : 0;
+		string += myInt;
+		
+		this.ii = new ImageIcon("./data/"+ string +".png");
+		
+        this.image = this.ii.getImage();
 	}
 }

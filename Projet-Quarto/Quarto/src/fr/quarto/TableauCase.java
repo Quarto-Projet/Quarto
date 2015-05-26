@@ -2,7 +2,6 @@ package fr.quarto;
 
 import java.awt.Container;
 import java.awt.GridLayout;
-
 import javax.swing.JPanel;
 
 public class TableauCase  extends JPanel{

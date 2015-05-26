@@ -106,6 +106,7 @@ public class Jeu extends JPanel{
 			}
 			pion.addMouseListener(new ListenerPion(pion, this));
 			reserve.getCase(i).add(pion);
+			pion.donneImage();
 		}
 	}
 

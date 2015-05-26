@@ -11,7 +11,7 @@ public class TableauCase  extends JPanel{
 	public TableauCase(int dimY, int dimX,Jeu jeu) {
 		GridLayout layout = new GridLayout(dimY,dimX);
 		layout.setVgap(2);
-		layout.setHgap(2);
+		layout.setHgap(1);
 		setLayout(layout);	
 		this.dimX = dimX;
 		this.dimY = dimY;

@@ -67,17 +67,18 @@ public class Pion extends JPanel{
 	}
 	public Image getImage() {
         return image;
-    }
+    } 
 	public ImageIcon getIi(){
 		return ii;
     }
 	@Override
 	public void paintComponent(Graphics g){
 		Graphics2D g2d;
-		int tailleX = 100;
+		int tailleX = this.getWidth();
 		int tailleY;
-		if(!this.isGrand()){
-			tailleX *= (float) 4/6;
+		int x, y;
+		if(this.isPlace()){
+			tailleX /= 4;
 		}
 		if (g instanceof Graphics2D) {
 			g2d = (Graphics2D) g;
@@ -87,7 +88,12 @@ public class Pion extends JPanel{
 			return;
 		}
 		tailleY = (int) (tailleX * ((float) this.getIi().getIconHeight()/this.getIi().getIconWidth()));
-		g2d.drawImage(this.getImage(), 10, 10, tailleX,tailleY, this);   
+		x = (this.getWidth()-tailleX)/2;
+		y = (this.getHeight()-tailleY)/2;
+		if(this.isPlace()){
+			y /=4;
+		}
+		g2d.drawImage(this.getImage(), x, y, tailleX,tailleY, this);   
 			
 }
 	public int getTaille() {
